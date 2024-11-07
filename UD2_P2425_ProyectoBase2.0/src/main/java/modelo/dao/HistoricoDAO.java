@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import modelo.vo.Departamento;
 
 /**
  *
@@ -68,6 +69,38 @@ public class HistoricoDAO {
         
         
     }
+
+    
+
+   public Departamento buscardepartamentoHistorico(Connection conn, Integer numdep) throws SQLException {
+     Departamento d = null;
+
+        String consulta = "select * from historicos where hdept_no=?";
+        PreparedStatement sentencia = conn.prepareStatement(consulta);
+        sentencia.setInt(1, numdep);
+
+        ResultSet rs = sentencia.executeQuery();
+
+        if (rs.next()) {
+            d = new Departamento(numdep, rs.getString(2), rs.getString(3));
+        }
+        return d;
+    }
+
+    public int borrarHistorico(Connection conn, Departamento d) throws SQLException {
+        
+          String consulta = "DELETE FROM historicos WHERE hdept_no = ?";
+
+        PreparedStatement sentencia = conn.prepareStatement(consulta);
+
+        sentencia.setInt(1, d.getDept_no());
+       
+
+        return sentencia.executeUpdate();
+        
+     }
+   
+  
     
     
     

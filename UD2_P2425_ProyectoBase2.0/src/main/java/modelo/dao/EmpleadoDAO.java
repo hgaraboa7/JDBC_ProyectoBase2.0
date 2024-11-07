@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import modelo.vo.Departamento;
+import modelo.vo.Empleado;
 
 /**
  *
@@ -99,16 +100,41 @@ public class EmpleadoDAO {
     }
 
     public int borrarEmp(Connection conn, Integer numdep) throws SQLException {
-       // int registrosAfectados;
+      
 
         String consulta = "DELETE FROM empleados WHERE dept_no = ?";
 
         PreparedStatement sentencia = conn.prepareStatement(consulta);
 
         sentencia.setInt(1, numdep);
-//        registrosAfectados = sentencia.executeUpdate();
+
 
         return sentencia.executeUpdate();
     }
+
+    public Empleado mostrarEmp(Connection conn, Integer numemp) throws SQLException {
+        
+        Empleado emp=null;
+        
+        String consulta="select * from empleados WHERE emp_no = ?";
+        
+        PreparedStatement sentencia=conn.prepareStatement(consulta);
+        
+        sentencia.setInt(1, numemp);
+        
+        ResultSet rs= sentencia.executeQuery();
+        
+        if(rs.next()){
+            
+            emp=new Empleado(numemp, rs.getString(2), rs.getString(3),rs.getInt(4),rs.getDate(5),rs.getDouble(6),rs.getDouble(7),rs.getInt(8));
+            
+            
+        }
+        
+        
+        return emp;
+        
+        
+          }
 
 }

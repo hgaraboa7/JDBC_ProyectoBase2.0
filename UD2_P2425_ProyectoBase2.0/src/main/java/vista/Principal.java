@@ -5,6 +5,7 @@
 package vista;
 
 import controlador.controladorPrincipal;
+import controlador.controladorSecundario;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -23,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         controladorPrincipal.iniciaFactory();
+        controladorSecundario.iniciaFactory();
         //que lleve el focus
         jLabel1.requestFocusInWindow();
     }
@@ -57,8 +59,9 @@ public class Principal extends javax.swing.JFrame {
         btninsertar = new javax.swing.JButton();
         btnBorrarCascada = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        btnMostrarDep = new javax.swing.JButton();
         btnBorrarRestring = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnVistaEmp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -151,17 +154,17 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnMostrarDep.setText("Mostrar Departamento");
-        btnMostrarDep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarDepActionPerformed(evt);
-            }
-        });
-
         btnBorrarRestring.setText("Borrar Restring.");
         btnBorrarRestring.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBorrarRestringActionPerformed(evt);
+            }
+        });
+
+        btnVistaEmp.setText("Editar Empleados");
+        btnVistaEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVistaEmpActionPerformed(evt);
             }
         });
 
@@ -171,46 +174,50 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnMostrarDep)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtnumdep2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(66, 66, 66)
-                                .addComponent(txtnombredep))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(60, 60, 60)
-                                .addComponent(txtlocdep))
-                            .addComponent(jScrollPane1)
-                            .addComponent(cmbDepartamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbltotaldep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtnumdep2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(66, 66, 66)
+                        .addComponent(txtnombredep))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(60, 60, 60)
+                        .addComponent(txtlocdep))
+                    .addComponent(jScrollPane1)
+                    .addComponent(cmbDepartamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbltotaldep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbltotalemp, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labeldep)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtnumdep, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnaceptar))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnVistaEmp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbltotalemp, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnBorrarCascada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btninsertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(labeldep)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnBorrarRestring)))))
-                .addContainerGap(164, Short.MAX_VALUE))
+                                .addComponent(txtnumdep, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnaceptar))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBorrarCascada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btninsertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBorrarRestring)))
+                .addContainerGap(104, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,9 +240,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtlocdep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar))
-                .addGap(30, 30, 30)
-                .addComponent(btnMostrarDep)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnaceptar)
@@ -249,9 +256,14 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(lbltotaldep, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(lbltotalemp, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(lbltotalemp, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnVistaEmp)))
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -262,6 +274,7 @@ public class Principal extends javax.swing.JFrame {
         
         //cerrar factory al cerrar ventana
         controladorPrincipal.cerrarFactory();
+        controladorSecundario.cerrarFactory();
         
     }//GEN-LAST:event_formWindowClosed
 
@@ -358,12 +371,6 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void btnMostrarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarDepActionPerformed
-      
-        
-        
-    }//GEN-LAST:event_btnMostrarDepActionPerformed
-
     private void btnBorrarRestringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarRestringActionPerformed
        
         controladorPrincipal.guardarHistorico();
@@ -374,6 +381,13 @@ public class Principal extends javax.swing.JFrame {
        
        
     }//GEN-LAST:event_btnBorrarRestringActionPerformed
+
+    private void btnVistaEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVistaEmpActionPerformed
+        
+        controladorSecundario.iniciar();
+        
+        
+    }//GEN-LAST:event_btnVistaEmpActionPerformed
 
     public JTextField getTxtlocdep() {
         return txtlocdep;
@@ -463,7 +477,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnBorrarCascada;
     private javax.swing.JButton btnBorrarRestring;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnMostrarDep;
+    private javax.swing.JButton btnVistaEmp;
     private javax.swing.JButton btnaceptar;
     private javax.swing.JButton btninsertar;
     private javax.swing.JComboBox<Departamento> cmbDepartamento;
@@ -472,6 +486,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labeldep;
     private javax.swing.JLabel lbltotaldep;
     private javax.swing.JLabel lbltotalemp;

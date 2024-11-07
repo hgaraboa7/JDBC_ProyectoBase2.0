@@ -101,7 +101,7 @@ public class DepartamentoDAO {
 
     public int insertar(Connection conn, Integer numdep, String nombre, String loc) throws SQLException {
 
-        int registrosAfectados;
+        
 
         String consulta = "INSERT INTO departamentos (dept_no, dnombre, loc) VALUES (?, ?, ?);";
 
@@ -111,9 +111,9 @@ public class DepartamentoDAO {
         sentencia.setString(2, nombre);
         sentencia.setString(3, loc);
 
-        registrosAfectados = sentencia.executeUpdate();
+        
 
-        return registrosAfectados;
+        return sentencia.executeUpdate();
 
     }
 
@@ -148,7 +148,7 @@ public class DepartamentoDAO {
 
     public int modificar(Connection conn, Integer numdep, String nombre, String loc) throws SQLException {
 
-        int registrosAfectados;
+        
 
         String consulta = "UPDATE departamentos SET dnombre = ?, loc = ? WHERE dept_no = ?";
 
@@ -158,11 +158,34 @@ public class DepartamentoDAO {
         sentencia.setString(2, loc);
         sentencia.setInt(3, numdep);
 
-        registrosAfectados = sentencia.executeUpdate();
+        return sentencia.executeUpdate();
 
-        return registrosAfectados;
+        
 
     }
+
+     public int recuperarHistorico(Connection conn, Departamento d) throws SQLException {
+        
+        
+        String consulta="insert into departamentos VALUES (?, ?, ?)";
+      
+        PreparedStatement sentencia = conn.prepareStatement(consulta);
+
+        sentencia.setInt(1, d.getDept_no());
+        sentencia.setString(2, d.getNombre());
+        sentencia.setString(3, d.getLoc());
+
+        return sentencia.executeUpdate();
+        
+        
+        
+        
+        
+     }
+
+    
+
+    
 
     
 

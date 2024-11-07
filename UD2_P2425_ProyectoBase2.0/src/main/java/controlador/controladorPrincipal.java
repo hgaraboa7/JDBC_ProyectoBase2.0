@@ -472,11 +472,15 @@ public class controladorPrincipal {
             
            
 
-            Departamento d = depDAO.buscardepartamento(conn, Integer.valueOf(ventana.getTxtnumdep2().getText()));
+            Departamento d = histDAO.buscardepartamentoHistorico(conn, Integer.valueOf(ventana.getTxtnumdep2().getText()));
 
             if (d != null) {
 
-                JOptionPane.showMessageDialog(null, "el departamento ya existe.");
+                JOptionPane.showMessageDialog(null, "el departamento está almacenado en Historico, se recuperará.");
+                
+                     JOptionPane.showMessageDialog(null, depDAO.recuperarHistorico(conn, d) + " registros afectados");
+                      JOptionPane.showMessageDialog(null, histDAO.borrarHistorico(conn, d) + " registros afectados");
+                
                 return;
 
             } else {
