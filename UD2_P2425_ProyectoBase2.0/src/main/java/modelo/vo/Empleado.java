@@ -48,6 +48,8 @@ public class Empleado {
     }
 
     public int getDir() {
+        
+        
         return dir;
     }
 
@@ -63,14 +65,14 @@ public class Empleado {
         this.date = date;
     }
 
-    public Empleado(int emp_no, String apellido, String oficio, int dir, Date date, Double salario, Double comision, int emp_dept_no) {
+    public Empleado(int emp_no, String apellido, String oficio, int dir, Date date, Double salario, int emp_dept_no) {
         this.emp_no = emp_no;
         this.apellido = apellido;
         this.oficio = oficio;
         this.dir = dir;
         this.date = date;
         this.salario = salario;
-        this.comision = comision;
+        
         this.emp_dept_no = emp_dept_no;
     }
 

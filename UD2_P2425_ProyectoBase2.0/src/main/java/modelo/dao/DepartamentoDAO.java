@@ -183,6 +183,27 @@ public class DepartamentoDAO {
         
      }
 
+    public void listarlosdatoscombobox2(Connection conn, DefaultComboBoxModel modelocombo) throws SQLException {
+        
+        modelocombo.removeAllElements();
+        
+        String consulta="select * from Departamentos";
+        
+        Statement sentencia=conn.createStatement();
+        
+        ResultSet rs=sentencia.executeQuery(consulta);
+        
+        while(rs.next()){
+            
+            modelocombo.addElement(new Departamento(rs.getInt(1),rs.getString(2),rs.getString(3)));
+            
+            
+        }
+        
+        
+        
+     }
+
     
 
     

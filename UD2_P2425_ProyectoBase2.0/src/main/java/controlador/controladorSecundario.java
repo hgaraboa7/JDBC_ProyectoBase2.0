@@ -15,6 +15,7 @@ import modelo.dao.DepartamentoDAO;
 import modelo.dao.EmpleadoDAO;
 import modelo.dao.HistoricoDAO;
 import modelo.dao.OperativaDAO;
+import modelo.vo.Departamento;
 import modelo.vo.Empleado;
 import vista.Empleados;
 import vista.Principal;
@@ -24,15 +25,15 @@ import vista.Principal;
  * @author hector.garaboacasas
  */
 public class controladorSecundario {
-    
-       public static DAOFactory mySQLFactory;
+
+    public static DAOFactory mySQLFactory;
     //declara los objetos DAO
 
     public static DepartamentoDAO depDAO;
     public static EmpleadoDAO empDAO;
     public static HistoricoDAO histDAO;
-    
-   public static OperativaDAO opDAO;
+
+    public static OperativaDAO opDAO;
 
     static DefaultComboBoxModel modelocombo = new DefaultComboBoxModel();
 
@@ -42,7 +43,7 @@ public class controladorSecundario {
         ventana.setVisible(true);
         ventana.setLocationRelativeTo(null);
 
-       // ventana.getCmbDepartamento().setModel(modelocombo);
+        ventana.getCmbDepEmpleado().setModel(modelocombo);
     }
 
     public static void iniciaFactory() {
@@ -51,10 +52,10 @@ public class controladorSecundario {
         depDAO = mySQLFactory.getDepartamentoDAO();
 
         empDAO = mySQLFactory.getEmpleadoDAO();
-        
-        histDAO=mySQLFactory.getHistoricoDAO();
-        
-        opDAO=mySQLFactory.getOperativaDAO();
+
+        histDAO = mySQLFactory.getHistoricoDAO();
+
+        opDAO = mySQLFactory.getOperativaDAO();
     }
 
     public static void cerrarFactory() {
@@ -66,44 +67,91 @@ public class controladorSecundario {
     }
 
     public static void MostrarEmp() {
-           try {
-               Connection conn;
-               conn = mySQLFactory.getConnection();
-              Empleado emp= empDAO.mostrarEmp(conn,
-                       Integer.valueOf(ventana.getTxtEmpNo().getText())
-                       );
-              
-              if (emp == null) {
+        try {
+            Connection conn;
+            conn = mySQLFactory.getConnection();
+            Empleado emp = empDAO.mostrarEmp(conn,
+                    Integer.valueOf(ventana.getTxtEmpNo().getText())
+            );
+
+            if (emp == null) {
 
                 JOptionPane.showMessageDialog(null, "el empleado NO existe.");
                 return;
 
             } else {
-                
-                  
-//                  ventana.getTxtApellido().setText(emp.getApellido());
-//                  ventana.getTxtComision().setText(emp.getComision().toString());
-//                  ventana.getTxtDir().setText(emp.getDir());
-//                  ventana.getTxtEmpDeptNo().setText(emp;
-//                  ventana.getTxtFechaAlt().setText(emp;
-//                  ventana.getTxtOficio().setText(emp;
-//                  ventana.getTxtSalario().setText(emp;
+
+                ventana.getTxtApellido().setText(emp.getApellido());
+
+                ventana.getTxtDir().setText(String.valueOf(emp.getDir()));
+
+                //java.sql.Date
+                ventana.getTxtFechaAlt().setText(String.valueOf(emp.getDate()));
+                ventana.getTxtOficio().setText(emp.getOficio());
+                ventana.getTxtSalario().setText(String.valueOf(emp.getSalario()));
+
+                Departamento dep = depDAO.buscardepartamento(conn, emp.getEmp_dept_no());
+                if (dep == null) {
+                    JOptionPane.showMessageDialog(null, "el departamento del empleado+" + ventana.getTxtEmpNo().getText() + " NO existe.");
+                    return;
+                } else {
+                    modelocombo.setSelectedItem(dep);
+                }
+
 //                  
-                  
-              }
-                       
-                       
-                       } catch (Exception ex) {
-               Logger.getLogger(controladorSecundario.class.getName()).log(Level.SEVERE, null, ex);
-           }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(controladorSecundario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static void mostrarComboDepartamento() {
+
+        Connection conn = null;
+
+        try {
+            conn = mySQLFactory.getConnection();
+
+            depDAO.listarlosdatoscombobox2(conn, modelocombo);
+
+        } catch (Exception ex) {
+            Logger.getLogger(controladorSecundario.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            mySQLFactory.releaseConnection(conn);
+        }
+
+    }
+
+    public static void insertarEmpleado() {
+        
+        Connection conn=null;
         
         
-     }
-    
-    
-    
-    
-    
-    
-    
+        
+        
+        
+        try {
+            conn=mySQLFactory.getConnection();
+            
+            empDAO.insertar(ventana.getTxtEmpNo(),
+                    ventana.getTxtApellido(),
+                    ventana.getTxtDir(), 
+                    ventana.getTxtOficio(), 
+                    ventana.getTxtSalario(),
+                    ventana.getTxtFechaAlt(),
+                    ventana.getCmbDepEmpleado().getSelectedItem());
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(controladorSecundario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+      }
+
 }

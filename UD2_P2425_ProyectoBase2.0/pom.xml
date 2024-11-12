@@ -19,4 +19,11 @@
         <exec.mainClass>UD2_P2425_ProyectoBase</exec.mainClass>
     </properties>
     <name>UD2_P2425_ProyectoBase2.0</name>
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
 </project>

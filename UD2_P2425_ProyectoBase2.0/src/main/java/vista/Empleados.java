@@ -6,7 +6,9 @@ package vista;
 
 import controlador.controladorPrincipal;
 import controlador.controladorSecundario;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import modelo.vo.Departamento;
 
 /**
  *
@@ -32,25 +34,33 @@ public class Empleados extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         txtEmpNo = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtOficio = new javax.swing.JTextField();
         txtDir = new javax.swing.JTextField();
-        txtFechaAlt = new javax.swing.JTextField();
         txtSalario = new javax.swing.JTextField();
-        txtComision = new javax.swing.JTextField();
-        txtEmpDeptNo = new javax.swing.JTextField();
         btnMostrar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnInsertar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        cmbDepEmpleado = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        txtFechaAlt = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -66,12 +76,6 @@ public class Empleados extends javax.swing.JFrame {
             }
         });
 
-        txtFechaAlt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaAltActionPerformed(evt);
-            }
-        });
-
         btnMostrar.setText("Mostrar");
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,60 +86,105 @@ public class Empleados extends javax.swing.JFrame {
         btnModificar.setText("Modificar");
 
         btnInsertar.setText("Insertar");
+        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
+
+        jLabel1.setText("Apellido");
+
+        jLabel2.setText("Numero Empleado");
+
+        jLabel3.setText("Oficio");
+
+        jLabel4.setText("Director");
+
+        jLabel5.setText("Salario");
+
+        jLabel6.setText("Departamento");
+
+        jLabel7.setText("Fecha de Alta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtEmpNo, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                    .addComponent(txtEmpDeptNo)
-                    .addComponent(txtComision)
-                    .addComponent(txtFechaAlt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDir)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtOficio))
-                .addGap(102, 102, 102)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnInsertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmbDepEmpleado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtEmpNo, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(txtDir)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtOficio)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFechaAlt))
+                        .addGap(102, 102, 102)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnInsertar, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                .addComponent(btnMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnModificar))
+                        .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtEmpNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMostrar))
-                .addGap(54, 54, 54)
-                .addComponent(txtOficio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOficio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInsertar))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInsertar))
-                .addGap(56, 56, 56)
-                .addComponent(txtFechaAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar))
-                .addGap(56, 56, 56)
-                .addComponent(txtComision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmpDeptNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrar))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(btnBorrar)
+                    .addComponent(txtFechaAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addGap(23, 23, 23)
+                .addComponent(cmbDepEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,22 +198,30 @@ public class Empleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDirActionPerformed
 
-    private void txtFechaAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaAltActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaAltActionPerformed
-
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         
         controladorSecundario.MostrarEmp();
+        
         
         
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
   //cerrar factory al cerrar ventana
+  
+  
+  
         controladorPrincipal.cerrarFactory();
-        controladorSecundario.cerrarFactory();        // TODO add your handling code here:
+        controladorSecundario.cerrarFactory();        
     }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+      controladorSecundario.mostrarComboDepartamento();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+        controladorSecundario.insertarEmpleado();
+    }//GEN-LAST:event_btnInsertarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,13 +235,7 @@ public class Empleados extends javax.swing.JFrame {
         this.txtApellido = txtApellido;
     }
 
-    public JTextField getTxtComision() {
-        return txtComision;
-    }
-
-    public void setTxtComision(JTextField txtComision) {
-        this.txtComision = txtComision;
-    }
+   
 
     public JTextField getTxtDir() {
         return txtDir;
@@ -194,13 +245,7 @@ public class Empleados extends javax.swing.JFrame {
         this.txtDir = txtDir;
     }
 
-    public JTextField getTxtEmpDeptNo() {
-        return txtEmpDeptNo;
-    }
-
-    public void setTxtEmpDeptNo(JTextField txtEmpDeptNo) {
-        this.txtEmpDeptNo = txtEmpDeptNo;
-    }
+    
 
     public JTextField getTxtEmpNo() {
         return txtEmpNo;
@@ -236,6 +281,18 @@ public class Empleados extends javax.swing.JFrame {
     public void setTxtSalario(JTextField txtSalario) {
         this.txtSalario = txtSalario;
     }
+
+    public JComboBox<Departamento> getCmbDepEmpleado() {
+        return cmbDepEmpleado;
+    }
+
+    public void setCmbDepEmpleado(JComboBox<Departamento> cmbDepEmpleado) {
+        this.cmbDepEmpleado = cmbDepEmpleado;
+    }
+    
+    
+    
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -243,10 +300,16 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JButton btnInsertar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnMostrar;
+    private javax.swing.JComboBox<Departamento> cmbDepEmpleado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtComision;
     private javax.swing.JTextField txtDir;
-    private javax.swing.JTextField txtEmpDeptNo;
     private javax.swing.JTextField txtEmpNo;
     private javax.swing.JTextField txtFechaAlt;
     private javax.swing.JTextField txtOficio;

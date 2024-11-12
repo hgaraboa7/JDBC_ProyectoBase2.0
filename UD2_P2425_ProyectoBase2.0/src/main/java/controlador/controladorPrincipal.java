@@ -41,8 +41,8 @@ public class controladorPrincipal {
     public static void iniciar() {
         ventana.setVisible(true);
         ventana.setLocationRelativeTo(null);
-
         ventana.getCmbDepartamento().setModel(modelocombo);
+ 
     }
 
     public static void iniciaFactory() {

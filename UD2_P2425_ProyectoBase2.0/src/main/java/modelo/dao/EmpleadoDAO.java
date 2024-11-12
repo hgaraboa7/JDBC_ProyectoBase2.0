@@ -12,6 +12,7 @@ import java.sql.Statement;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import modelo.vo.Departamento;
 import modelo.vo.Empleado;
 
@@ -126,7 +127,7 @@ public class EmpleadoDAO {
         
         if(rs.next()){
             
-            emp=new Empleado(numemp, rs.getString(2), rs.getString(3),rs.getInt(4),rs.getDate(5),rs.getDouble(6),rs.getDouble(7),rs.getInt(8));
+            emp=new Empleado(numemp, rs.getString(2), rs.getString(3),rs.getInt(4),rs.getDate(5),rs.getDouble(6),rs.getInt(8));
             
             
         }
@@ -136,5 +137,9 @@ public class EmpleadoDAO {
         
         
           }
+
+    public void insertar(JTextField txtEmpNo, JTextField txtApellido, JTextField txtDir, JTextField txtOficio, JTextField txtSalario, JTextField txtFechaAlt, Object selectedItem) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
